@@ -60,7 +60,7 @@ VALUES
 
 ## Analysis: The following SQL was written to answer specific questions about the content on the above Fortune 500 companies:
 
-### Assign all companies as "Extremely Maternity Friendly", "Mid-Maternity Friendly" or "Kind of Maternity Friendly" based on the maternity leave offered.
+### 1. Assign all companies as "Extremely Maternity Friendly", "Mid-Maternity Friendly" or "Kind of Maternity Friendly" based on the maternity leave offered.
 SELECT company_name, maternity_leave_weeks,
 CASE WHEN maternity_leave_weeks >= 13 THEN 'Extremely Maternity Friendly'
      WHEN maternity_leave_weeks >= 10 THEN 'Mid-Maternity Friendly'
@@ -70,13 +70,13 @@ CASE WHEN maternity_leave_weeks >= 13 THEN 'Extremely Maternity Friendly'
 FROM fortune_companies
 ORDER BY maternity_leave_weeks;
 
-### Which industries had the most time off given?
+### 2. Which industries had the most time off given?
 SELECT industry, SUM(paid_time_off_days) AS total_paid_days_off
 FROM fortune_companies
 GROUP BY industry
 ORDER BY total_paid_days_off;
 
-### What are the top 5 worst industries for employee turnover?
+### 3. What are the top 5 worst industries for employee turnover?
 SELECT industry, ROUND(SUM(avg_employee_tenure),1) AS avg_employee_turnover
 FROM fortune_companies
 GROUP BY industry
@@ -84,7 +84,7 @@ HAVING avg_employee_turnover >= 20
 ORDER BY avg_employee_turnover DESC
 LIMIT 5;
 
-### Which companies have a revenue of at least $300 Billion and 100k employees?
+### 4. Which companies have a revenue of at least $300 Billion and 100k employees?
 SELECT company_name, revenue, employees
 FROM fortune_companies
 WHERE revenue >= 300
