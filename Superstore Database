@@ -28,30 +28,30 @@ VALUES
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
 
+## Analysis: The following SQL was written to answer specific questions about the Superstore dataset:
 
-
-### Show all data in a table.
+### 1. Show all data in a table.
 SELECT *
 FROM superstore
 ORDER BY price;
 
-### Use a SELECT statement to order the items by price.
+### 2. Use a SELECT statement to order the items by price.
 SELECT item_name, SUM(price)
 FROM superstore
 GROUP BY item_name
 ORDER BY PRICE;
 
-### Show a statistic about the item prices.
+### 3. Show a statistic about the item prices.
 SELECT AVG(price)
 FROM superstore;
 
-### Show a statistic about the price for items in the category of "Kitchen Supplies". 
+### 4. Show a statistic about the price for items in the category of "Kitchen Supplies". 
 SELECT category, item_name, SUM(price) AS price
 FROM superstore
 WHERE category='Kitchen Supplies'
 GROUP BY item_name;
 
-### Show a statictic about the quantity in stock in the category of "Appliances".
+### 5. Show a statictic about the quantity in stock in the category of "Appliances".
 SELECT category, SUM(stock_quantity)
 FROM superstore
 WHERE category='Appliances';
